@@ -42,16 +42,18 @@ bool linkedlist<T>::addatbegin(T ele)
 
 	if(isempty())
 	{ 
-		t->setnext(NULL);
+		t->setnext(t);
 		head=t;
 		tail=t;
 		count++;
 		bSuccess=true;
 	}
-	else
-	{
+	else    
+
+	{       tail->setnext(t);
 		t->setnext(head);
 		head=t;
+
 		count++;
 
 		bSuccess=true;
@@ -167,14 +169,14 @@ void linkedlist<T>::display()
 	node<T> *t=NULL;
 	t=head;
 
-	while(t!=NULL)
+	do
 	{ 
 		cout<<t->getdata()<<"\t";
 
 		t=t->getnext();
 
-	}
-	cout<<"NULL";
+	}while(t!=tail);
+	cout<<tail->getdata()<<endl;
 
 }
 
@@ -218,41 +220,9 @@ void linkedlist<T>::reverse()
 	}
 }
 
+        
 
-/*
-
-template <class T>
-void linkedlist<T>::addatpos(int pos,T ele)
-{
-cout<<"enter the ele";
-        cin>>ele;
-
-        cout<<"enter the position";
-        cin>> pos;
-
-    
- 	if(count >=  pos-1)
-	{
-
-	  node<T> *p = head;
-	  node<T> *q=head->getnext();
-	  int no=0;
-	  while(no != pos-2)
-	  {
-		p=p->getnext();
-		q=q->getnext();
-		no++;
-	  }
-	 node<T> *temp = new node<T>;
-	 temp->setnext(q);
-	 temp->setdata(ele); 
-	 p->setnext(temp);
-	 count++;
-	 
-}
-}
-
-*/	template<class T>
+	template<class T>
 void linkedlist<T>::addatpos(int pos,T ele)
 {
 
