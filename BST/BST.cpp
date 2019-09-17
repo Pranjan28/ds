@@ -5,7 +5,8 @@ using namespace std;
 
 
 template<class T>
-BST<T>::BST(){}
+BST<T>::BST():root(nullptr)
+{}
 
 	template<class T>
 BST<T>::~BST()
@@ -13,7 +14,7 @@ BST<T>::~BST()
 
 }
 
-template<class T>
+	template<class T>
 Node<T>* BST<T>::getRootNode()
 {
 	return root;
@@ -23,11 +24,13 @@ Node<T>* BST<T>::getRootNode()
 	template<class T>
 void BST<T>:: insert(T ele)
 {
-	Node<T>* temp=new Node<T>; //create new node to be inserted
+//	cout<<"\nInside Insert"<<endl;
+	Node<T> *temp=new Node<T>; //create new node to be inserted
+//	cout<<"\nNode temp"<<endl;
 	temp->setData(ele);
 	temp->setLeft(NULL);
 	temp->setRight(NULL);
-        if(root==NULL)   // if tree is empty
+	if(root==NULL)   // if tree is empty
 	{
 		root=temp;
 	}
@@ -54,7 +57,7 @@ void BST<T>:: insert(T ele)
 			}
 			else     // insert at right
 			{
-                                if(current->getRight()==NULL)
+				if(current->getRight()==NULL)
 				{
 					current->setRight(temp);
 					return;
@@ -63,46 +66,46 @@ void BST<T>:: insert(T ele)
 				{
 					current=current->getRight();
 				}
-                         }
+			}
 		}
 	}
 }
 
 	template<class T>
-	 void BST<T>::preorder(Node<T>* temp) 
-        {
-         while(temp!=NULL)
-	 {
-		 cout<<temp->getData()<<" "<<endl;
-		 preorder(temp->getLeft()); // recursive fuction will run till leftmost node(argument)
-		 preorder(temp->getRight());// right
-	 }
-        }
+void BST<T>::preorder(Node<T>* temp) 
+{
+	while(temp!=NULL)
+	{
+		cout<<temp->getData()<<" <--> ";
+		preorder(temp->getLeft()); // recursive fuction will run till leftmost node(argument)
+		preorder(temp->getRight());// right
+	}
+}
 
 
 /*	template<class T>
-		static void BST<T>::inorder(Node<T>* temp);
+	static void BST<T>::inorder(Node<T>* temp);
 
 	template<class T>
-		static void BST<T>::postorder(Node<T>* temp);
+	static void BST<T>::postorder(Node<T>* temp);
 
 	template<class T>
-		static void BST<T>::delete(Node<T>* temp);
+	static void BST<T>::delete(Node<T>* temp);
 
 	template<class T>
-		static void BST<T>::findMax(Node<T>* temp);
+	static void BST<T>::findMax(Node<T>* temp);
 
 	template<class T>
-		static void BST<T>::findMin(Node<T>* temp);
+	static void BST<T>::findMin(Node<T>* temp);
 
 	template<class T>
-		Node<T>* BST<T>::getRootNode();
+	Node<T>* BST<T>::getRootNode();
 
 	template<class T>
-		bool BST<T>::search(T val);
+	bool BST<T>::search(T val);
 
 	template<class T>
-		static void BST<T>::heightOfTree(Node<T>* temp);
+	static void BST<T>::heightOfTree(Node<T>* temp);
 
 */
 
