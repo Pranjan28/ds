@@ -4,8 +4,8 @@
 using namespace std;
 
 
-template<class T>
-BST<T>::BST():root(nullptr)
+	template<class T>
+BST<T>::BST():root(NULL)
 {}
 
 	template<class T>
@@ -24,9 +24,7 @@ Node<T>* BST<T>::getRootNode()
 	template<class T>
 void BST<T>:: insert(T ele)
 {
-//	cout<<"\nInside Insert"<<endl;
-	Node<T> *temp=new Node<T>; //create new node to be inserted
-//	cout<<"\nNode temp"<<endl;
+	Node<T>* temp=new Node<T>; //create new node to be inserted
 	temp->setData(ele);
 	temp->setLeft(NULL);
 	temp->setRight(NULL);
@@ -74,43 +72,113 @@ void BST<T>:: insert(T ele)
 	template<class T>
 void BST<T>::preorder(Node<T>* temp) 
 {
-	while(temp!=NULL)
+	if(temp!=NULL)
 	{
-		cout<<temp->getData()<<" <--> ";
+		cout<<temp->getData()<<" "<<endl;
 		preorder(temp->getLeft()); // recursive fuction will run till leftmost node(argument)
 		preorder(temp->getRight());// right
 	}
 }
 
 
-/*	template<class T>
-	static void BST<T>::inorder(Node<T>* temp);
+	template<class T>
+void BST<T>::inorder(Node<T>* temp)
+{
+	if(temp!=NULL)
+	{
+
+		inorder(temp->getLeft()); 
+		cout<<(temp->getData())<<" "<<endl;
+		inorder(temp->getRight());	 
+	}	 
+}
+
 
 	template<class T>
-	static void BST<T>::postorder(Node<T>* temp);
+void BST<T>::postorder(Node<T>* temp)
+{
+	if(temp!=NULL)
+	{
+
+		postorder(temp->getLeft());
+		postorder(temp->getRight());
+		cout<<(temp->getData())<<" "<<endl;
+	}}
+
 
 	template<class T>
-	static void BST<T>::delete(Node<T>* temp);
+void BST<T>::Delete(Node<T>* temp)
+{
+	if (temp != NULL) 
+	{
+		Delete(temp->getLeft());
+		Delete(temp->getRight());
+	}
+	delete temp;
+}
 
 	template<class T>
-	static void BST<T>::findMax(Node<T>* temp);
+void BST<T>::findMax(Node<T>* temp)
+{
+	while(temp->getRight()!=NULL)
+	{
+		temp=temp->getRight();
+		BST<T>::countRight++;
+
+	}
+	cout<<(temp->getData())<<" "<<endl;
+	cout<<countRight<<" "<<endl;
+}
 
 	template<class T>
-	static void BST<T>::findMin(Node<T>* temp);
+void BST<T>::findMin(Node<T>* temp)
+{
+	while(temp->getLeft()!=NULL)
+	{
+		temp=temp->getLeft();
+		countLeft++;
+	}
+	cout<<(temp->getData())<<" "<<endl;
+	cout<<countLeft<<" "<<endl;
+}
+template<class T>
+int BST<T>::countRight=0;
+template<class T>
+int BST<T>::countLeft=0;
 
 	template<class T>
-	Node<T>* BST<T>::getRootNode();
+void BST<T>::heightOfTree()
+{
+	if(countRight>countLeft)
+		cout<<"height= "<<(countRight+1)<<endl;
+	else
+		cout<<"height= "<<(countLeft+1)<<endl;
+}
+
 
 	template<class T>
-	bool BST<T>::search(T val);
+bool BST<T>::search(T val)
+{     Node<T>* temp=root;
+	while(temp!=NULL)
+	{
+		if(temp->getData()==val)
+		{
+			return true;
+		}
 
-	template<class T>
-	static void BST<T>::heightOfTree(Node<T>* temp);
+		else if(val<temp->getData())
+		{
+			temp=temp->getLeft();
+		}
 
-*/
+		else 
+		{
+			temp=temp->getRight();
+		}
+	}
 
-
-
+	return false;
+}
 
 
 

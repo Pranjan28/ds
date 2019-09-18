@@ -5,6 +5,8 @@ class BST
 {
 	private:
 		Node<T>* root;
+		static int countLeft;
+	       static int countRight;
 
 	public:
 		BST();
@@ -21,8 +23,9 @@ class BST
 		static void findMin(Node<T>* temp);
                 
 		Node<T>* getRootNode();
+	
 		bool search(T val);
-		static void heightOfTree(Node<T>* temp);
+		static void heightOfTree();
 
 
 
